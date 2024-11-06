@@ -5,8 +5,7 @@ module pipecontrol(opcode, equal, RegDst, AluOp, AluSrc, BranchMux, MemRead, Mem
    output          RegDst, AluSrc, MemRead, MemWrite, ZeroMux, RegWrite, MemToReg, IfFlush;
    reg [1:0]       AluOp;
    reg             RegDst, AluSrc, MemRead, MemWrite, ZeroMux, RegWrite, MemToReg, IfFlush;
-   reg [2:0]       caseoperation;
-   reg [2:0]       BranchMux;
+   reg [2:0]       caseoperation, BranchMux;
    
    parameter rformat = 0;
    parameter    iformat = 1;
