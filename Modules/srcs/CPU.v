@@ -185,17 +185,13 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    
    mux2to1 ImmAluBMux(AluIB, IDEX_B, IDEX_Immediate, EX_AluSrc);
    //add forwarding unit muxes 
-   mux3to1_32bit ForwardAMux(AluA, IDEX_A, MemAluOut, WriteBackData, forwardA); 
-   mux3to1_32bit ForwardBMux(AluB, IDEX_B, MemAluOut, WriteBackData, forwardB);
+   mux3to1_32bit ForwardAMux(AluA, IDEX_A, WriteBackData, MemAluOut, forwardA); 
+   mux3to1_32bit ForwardBMux(AluB, AluIB, WriteBackData, MemAluOut, forwardB);
    
-   
-   //mux to pick between the imm or the forwarded b value
-   wire [31:0] immVsfwdB;
-   mux2to1 immVsfwd(immVsfwdB, AluB, IDEX_Immediate, EX_AluSrc); 
    
    //add mux to select between ImmAluB or the forwarded b value 
    alu MarkAlu(AluA,
-               immVsfwdB,
+               AluB,
                EX_AluCntrlOut[3:0],
                EX_AluCntrlOut[8:4],
                AluResult,
