@@ -1,0 +1,33 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../Modules/srcs/CPU.v" \
+"../../../../../Modules/srcs/RegFile.v" \
+"../../../../../Modules/srcs/alu.v" \
+"../../../../../Modules/srcs/alucontrol.v" \
+"../../../../Lab7Verilog.srcs/sources_1/new/forwardingunit.v" \
+"../../../../../Modules/srcs/hazardunit.v" \
+"../../../../../Modules/srcs/incrementer.v" \
+"../../../../../Modules/srcs/jumpadd.v" \
+"../../../../../Modules/srcs/load_in_counter.v" \
+"../../../../../Modules/srcs/memory2.v" \
+"../../../../../Modules/srcs/multiplycontrol.v" \
+"../../../../../Modules/srcs/mux2to1.v" \
+"../../../../../Modules/srcs/mux2to1_1bit.v" \
+"../../../../../Modules/srcs/mux2to1_5bit.v" \
+"../../../../../Modules/srcs/mux3to1_32bit.v" \
+"../../../../../Modules/srcs/pipecontrol.v" \
+"../../../../../Modules/srcs/reg_14bitne.v" \
+"../../../../../Modules/srcs/reg_2bitne.v" \
+"../../../../../Modules/srcs/reg_32bit.v" \
+"../../../../../Modules/srcs/reg_32bitne.v" \
+"../../../../../Modules/srcs/reg_5bitne.v" \
+"../../../../../Modules/srcs/signextend.v" \
+"../../../../../Modules/srcs/signextend26.v" \
+"../../../../../Modules/srcs/stallmux.v" \
+"../../../../../Modules/sim/discussion_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort
