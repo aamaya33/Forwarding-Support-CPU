@@ -34,23 +34,15 @@ module forwardingunit(
 
         //add 1 ahead forwarding 
         if (EXMEM_RegWrite && (EXMEM_RegisterRd != 0)) begin //make sure we're not forwarding to $0 since its our ~special~ register
-            if (EXMEM_RegisterRd == IDEX_Rs)
-                forwardA = 2'b10; //logic ripped straight from the slides and we don't include both since 10 tells us that the data is one cycle ahead of idex which prevents stalls 
+            if (EXMEM_RegisterRd == IDEX_Rs) //EX hazard
+                forwardA = 2'b10; //logic ripped straight from the slides 
             if (EXMEM_RegisterRd == IDEX_Rt)
                 forwardB = 2'b10; 
-//            if ((EXMEM_RegisterRd != IDEX_Rs) && (MEMWB_RegisterRd == IDEX_Rs))
-//                forwardA = 2'b01;
-//            if ((EXMEM_RegisterRd != IDEX_Rt) && (MEMWB_RegisterRd == IDEX_Rt))
-//                forwardB = 2'b01;
         end
 
-        //add 2 ahead forwarding 
-        if (MEMWB_RegWrite && (MEMWB_RegisterRd != 0)) begin
-//            if ((EXMEM_RegisterRd == IDEX_Rs) && (forwardA == 2'b00))
-//                forwardA = 2'b10; //logic ripped straight from the slides 
-//            if ((EXMEM_RegisterRd == IDEX_Rt) && (forwardB == 2'b00))
-//                forwardB = 2'b10; 
-            if ((EXMEM_RegisterRd != IDEX_Rs) && (MEMWB_RegisterRd == IDEX_Rs))
+        //add 2 ahead forwarding only if 1 ahead did not match 
+        else if (MEMWB_RegWrite && (MEMWB_RegisterRd != 0)) begin
+            if ((EXMEM_RegisterRd != IDEX_Rs) && (MEMWB_RegisterRd == IDEX_Rs)) //MEM hazard
                 forwardA = 2'b01;
             if ((EXMEM_RegisterRd != IDEX_Rt) && (MEMWB_RegisterRd == IDEX_Rt))
                 forwardB = 2'b01;

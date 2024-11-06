@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="discussion_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="discussion_tb" />
+            <top_module name="glbl" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="100.680 ns"></ZoomStartTime>
+      <ZoomEndTime time="434.481 ns"></ZoomEndTime>
+      <Cursor1Time time="218.280 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/discussion_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/Reset" type="logic">
+      <obj_property name="ElementShortName">Reset</obj_property>
+      <obj_property name="ObjectShortName">Reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/LoadInstructions" type="logic">
+      <obj_property name="ElementShortName">LoadInstructions</obj_property>
+      <obj_property name="ObjectShortName">LoadInstructions</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/Instruction" type="array">
+      <obj_property name="ElementShortName">Instruction[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Instruction[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/out" type="array">
+      <obj_property name="ElementShortName">out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">out[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/forwardA" type="array">
+      <obj_property name="ElementShortName">forwardA[1:0]</obj_property>
+      <obj_property name="ObjectShortName">forwardA[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/forwardB" type="array">
+      <obj_property name="ElementShortName">forwardB[1:0]</obj_property>
+      <obj_property name="ObjectShortName">forwardB[1:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/WriteBackData" type="array">
+      <obj_property name="ElementShortName">WriteBackData[31:0]</obj_property>
+      <obj_property name="ObjectShortName">WriteBackData[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/EXMEM_RegWrite" type="logic">
+      <obj_property name="ElementShortName">EXMEM_RegWrite</obj_property>
+      <obj_property name="ObjectShortName">EXMEM_RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/EXMEM_RegisterRd" type="array">
+      <obj_property name="ElementShortName">EXMEM_RegisterRd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">EXMEM_RegisterRd[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/IDEX_Rs" type="array">
+      <obj_property name="ElementShortName">IDEX_Rs[4:0]</obj_property>
+      <obj_property name="ObjectShortName">IDEX_Rs[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/IDEX_Rt" type="array">
+      <obj_property name="ElementShortName">IDEX_Rt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">IDEX_Rt[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/MEMWB_RegWrite" type="logic">
+      <obj_property name="ElementShortName">MEMWB_RegWrite</obj_property>
+      <obj_property name="ObjectShortName">MEMWB_RegWrite</obj_property>
+   </wvobject>
+   <wvobject fp_name="/discussion_tb/uut/forwarding_unit/MEMWB_RegisterRd" type="array">
+      <obj_property name="ElementShortName">MEMWB_RegisterRd[4:0]</obj_property>
+      <obj_property name="ObjectShortName">MEMWB_RegisterRd[4:0]</obj_property>
+   </wvobject>
+</wave_config>

@@ -184,9 +184,18 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    /////////////////   EX Stage ///////////////////////////////////////
    
    mux2to1 ImmAluBMux(AluIB, IDEX_B, IDEX_Immediate, EX_AluSrc);
+   //add forwarding unit muxes 
+   mux3to1_32bit ForwardAMux(AluA, IDEX_A, MemAluOut, WriteBackData, forwardA); 
+   mux3to1_32bit ForwardBMux(AluB, IDEX_B, MemAluOut, WriteBackData, forwardB);
    
-   alu MarkAlu(IDEX_A,
-               AluIB,
+   
+   //mux to pick between the imm or the forwarded b value
+   wire [31:0] immVsfwdB;
+   mux2to1 immVsfwd(immVsfwdB, AluB, IDEX_Immediate, EX_AluSrc); 
+   
+   //add mux to select between ImmAluB or the forwarded b value 
+   alu MarkAlu(AluA,
+               immVsfwdB,
                EX_AluCntrlOut[3:0],
                EX_AluCntrlOut[8:4],
                AluResult,
@@ -205,7 +214,17 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    mux2to1_5bit RegDstMux(RegDestMuxOut, IDEX_Rt, IDEX_Rd, EX_RegDst);
    
    ///////////////// Forwarding Unit //////////////////////////////////
-   
+   wire [1:0] forwardA, forwardB;
+   forwardingunit forwarding_unit (
+       .IDEX_Rs(IDEX_Rs), 
+       .IDEX_Rt(IDEX_Rt),
+       .EXMEM_RegWrite(EXMEM_WBControl[0]),     // EX/MEM.RegWrite signal
+       .EXMEM_RegisterRd(MemDest),              
+       .MEMWB_RegWrite(WB_WBControl[0]),        // MEM/WB.RegWrite signal
+       .MEMWB_RegisterRd(WriteBackDest),        
+       .forwardA(forwardA), 
+       .forwardB(forwardB)
+   );
    
    ////////////////   EX/MEM  /////////////////////////////////////////
    
