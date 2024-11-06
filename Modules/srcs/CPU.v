@@ -53,7 +53,7 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    wire [13:0]   IDEX_EXControl;
    wire [31:0]   IDEX_A, IDEX_B;
    wire [31:0]   IDEX_Immediate;
-   wire [4:0]    IDEX_Rs, IDEX_Rt, IDEX_Rd;
+   wire [4:0]    IDEX_Rs, IDEX_Rt, IDEX_Rd; //connect rs and rt to forwarding unit 
    
    // EX Wires
    wire          MemReadEx;
@@ -75,7 +75,7 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    wire [31:0]   AluResult, Hi, Lo, AluMuxResult;
    wire [31:0]   HiRegOut, LoRegOut;
    
-   wire [4:0]    RegDestMuxOut;
+   wire [4:0]    RegDestMuxOut; //EXMEM_RegisterRd?
    
    ///  Ex/Mem Wires
    
@@ -185,17 +185,13 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    
    mux2to1 ImmAluBMux(AluIB, IDEX_B, IDEX_Immediate, EX_AluSrc);
    //add forwarding unit muxes 
-   mux3to1_32bit ForwardAMux(AluA, IDEX_A, MemAluOut, WriteBackData, forwardA); 
-   mux3to1_32bit ForwardBMux(AluB, IDEX_B, MemAluOut, WriteBackData, forwardB);
+   wire[31:0] forward_a, forward_b;
+   mux3to1_32bit ForwardAMux(forward_a, IDEX_A, WriteBackData, MemAluOut, forwardA); 
+   mux3to1_32bit ForwardBMux(forward_b, AluIB, WriteBackData, MemAluOut, forwardB);
    
-   
-   //mux to pick between the imm or the forwarded b value
-   wire [31:0] immVsfwdB;
-   mux2to1 immVsfwd(immVsfwdB, AluB, IDEX_Immediate, EX_AluSrc); 
-   
-   //add mux to select between ImmAluB or the forwarded b value 
-   alu MarkAlu(AluA,
-               immVsfwdB,
+    
+   alu MarkAlu(forward_a,
+               forward_b,
                EX_AluCntrlOut[3:0],
                EX_AluCntrlOut[8:4],
                AluResult,
@@ -218,9 +214,9 @@ module CPU(out, clk, Reset, LoadInstructions, Instruction);
    forwardingunit forwarding_unit (
        .IDEX_Rs(IDEX_Rs), 
        .IDEX_Rt(IDEX_Rt),
-       .EXMEM_RegWrite(EXMEM_WBControl[0]),     // EX/MEM.RegWrite signal
+       .EXMEM_RegWrite(MEM_RegWrite),     // EX/MEM.RegWrite signal
        .EXMEM_RegisterRd(MemDest),              
-       .MEMWB_RegWrite(WB_WBControl[0]),        // MEM/WB.RegWrite signal
+       .MEMWB_RegWrite(RegWriteWB),        // MEM/WB.RegWrite signal
        .MEMWB_RegisterRd(WriteBackDest),        
        .forwardA(forwardA), 
        .forwardB(forwardB)

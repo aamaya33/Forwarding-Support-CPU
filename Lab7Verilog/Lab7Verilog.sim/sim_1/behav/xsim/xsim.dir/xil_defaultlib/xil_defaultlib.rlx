@@ -4,9 +4,9 @@ May 22 2024
 19:03:11
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Lab7Verilog/Lab7Verilog.sim/sim_1/behav/xsim/glbl.v,1708598507,verilog,,,,glbl,,,,,,,,
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Lab7Verilog/Lab7Verilog.srcs/sim_1/new/forwardingunit_tb.v,1730763892,verilog,,,,forwardingunit_tb,,,,,,,,
-C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Lab7Verilog/Lab7Verilog.srcs/sources_1/new/forwardingunit.v,1730850245,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/hazardunit.v,,forwardingunit,,,,,,,,
+C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Lab7Verilog/Lab7Verilog.srcs/sources_1/new/forwardingunit.v,1730858070,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/hazardunit.v,,forwardingunit,,,,,,,,
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/sim/discussion_tb.v,1730757938,verilog,,,,discussion_tb,,,,,,,,
-C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/CPU.v,1730848749,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/RegFile.v,,CPU,,,,,,,,
+C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/CPU.v,1730858060,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/RegFile.v,,CPU,,,,,,,,
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/RegFile.v,1730757938,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/alu.v,,RegFile,,,,,,,,
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/alu.v,1730757938,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/alucontrol.v,,alu,,,,,,,,
 C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Modules/srcs/alucontrol.v,1730757938,verilog,,C:/Users/amaya/Documents/GitHub/Forwarding-Support-CPU/Lab7Verilog/Lab7Verilog.srcs/sources_1/new/forwardingunit.v,,alucontrol,,,,,,,,
